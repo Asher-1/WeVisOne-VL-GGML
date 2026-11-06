@@ -293,6 +293,26 @@ CUDA_VISIBLE_DEVICES=0 python demo/app.py \
 
 
 
+## ⚙️ C++ GGML Backend (cpp_ggml)
+
+A pure C++17 inference path over a pinned llama.cpp/ggml runtime (LLAMA
+0.7.0-dev / GGML 0.27.0) with CUDA and Vulkan backends (no cuDNN), an
+AICore-style C API (`cpp_ggml/include/wevisone/wevisone_capi.h`) and the
+9.6M-parameter pixel decoder ported to ggml graphs:
+
+```bash
+git submodule update --init --recursive
+cmake -S cpp_ggml -B cpp_ggml/build-cpu -DCMAKE_BUILD_TYPE=Release
+cmake --build cpp_ggml/build-cpu --parallel 8
+cpp_ggml/build-cpu/wevisone-cli run --image demo/examples/images/seabreeze.jpg \
+    --task matting --query person --device cpu
+```
+
+GGUF exports (f32 / f16 / q8_0 / q4_K_M for the 2B and 4B checkpoints) are
+produced by `cpp_ggml/scripts/export_gguf_variants.sh`; per-tier usage and
+parity expectations live in `cpp_ggml/models/MODEL_CARD.md`, the benchmark
+harness in `cpp_ggml/benchmarks/`. See `cpp_ggml/README.md` for details.
+
 ## 📊 Evaluation
 
 See [evaluation/README.md](evaluation/README.md).

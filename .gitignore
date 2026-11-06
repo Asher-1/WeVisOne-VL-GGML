@@ -4,6 +4,8 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .venv/
+.vscode/
+.qoder/
 dist/
 build/
 outputs/
@@ -26,3 +28,16 @@ project_page/
 tests/
 tools/
 *.tex
+
+# cpp_ggml integration (submodule pin: llama.cpp @ LLAMA 0.7.0-dev / GGML 0.27.0)
+cpp_ggml/build-*/
+cpp_ggml/models/gguf/*
+!cpp_ggml/models/gguf/.gitkeep
+cpp_ggml/models/hf/*
+!cpp_ggml/models/hf/.gitkeep
+cpp_ggml/benchmarks/results/**
+!cpp_ggml/benchmarks/results/.gitkeep
+cpp_ggml/benchmarks/tmp/
+cpp_ggml/third_party/llama.cpp/.wwv-patches-applied
+*.gguf
+*.safetensors
