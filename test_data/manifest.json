@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "note": "Per-task best test images (all 11 task families). The 7 official released demo photos (demo/examples/images) are referenced in place; 17 clean input photos are extracted from the left 'Image' column of the README case-study figures into test_data/images (see extract_originals.py); assets/demo/seabreeze.jpg (the README matting input) is referenced in place. Queries for extracted samples reuse the figure captions verbatim.",
+  "samples": [
+    {
+      "id": "livingroom_detection",
+      "image": "demo/examples/images/livingroom.jpg",
+      "task": "detection",
+      "query": "sofa\npillow\nlamp",
+      "source": "bundled"
+    },
+    {
+      "id": "seabreeze_matting",
+      "image": "demo/examples/images/seabreeze.jpg",
+      "task": "matting",
+      "query": "person",
+      "source": "bundled"
+    },
+    {
+      "id": "dogs_referring",
+      "image": "demo/examples/images/dogs.jpg",
+      "task": "referring",
+      "query": "the dog closest to the camera",
+      "source": "bundled"
+    },
+    {
+      "id": "boys_count_box",
+      "image": "demo/examples/images/boys.jpg",
+      "task": "count_box",
+      "query": "people",
+      "source": "bundled"
+    },
+    {
+      "id": "livingroom_referring",
+      "image": "demo/examples/images/livingroom.jpg",
+      "task": "referring",
+      "query": "the lamp on the table",
+      "source": "bundled"
+    },
+    {
+      "id": "seabreeze_detection",
+      "image": "demo/examples/images/seabreeze.jpg",
+      "task": "detection",
+      "query": "person\nsurfboard",
+      "source": "bundled"
+    },
+    {
+      "id": "coffee_sign_ocr",
+      "image": "demo/examples/images/coffee_sign.jpg",
+      "task": "ocr",
+      "query": "text",
+      "source": "bundled"
+    },
+    {
+      "id": "parasol_point",
+      "image": "demo/examples/images/parasol.jpg",
+      "task": "point",
+      "query": "umbrella",
+      "source": "bundled"
+    },
+    {
+      "id": "chess_referring",
+      "image": "demo/examples/images/chess.jpg",
+      "task": "referring",
+      "query": "the white king",
+      "source": "bundled"
+    },
+    {
+      "id": "parasol_detection",
+      "image": "demo/examples/images/parasol.jpg",
+      "task": "detection",
+      "query": "umbrella",
+      "source": "bundled"
+    },
+    {
+      "id": "dogs_count_box",
+      "image": "demo/examples/images/dogs.jpg",
+      "task": "count_box",
+      "query": "dogs",
+      "source": "bundled"
+    },
+    {
+      "id": "chess_count_box",
+      "image": "demo/examples/images/chess.jpg",
+      "task": "count_box",
+      "query": "chess pieces",
+      "source": "bundled"
+    },
+    {
+      "id": "chess_count_point",
+      "image": "demo/examples/images/chess.jpg",
+      "task": "count_point",
+      "query": "white chess pieces",
+      "source": "bundled"
+    },
+    {
+      "id": "coffee_sign_ocr_grounding",
+      "image": "demo/examples/images/coffee_sign.jpg",
+      "task": "ocr_grounding",
+      "query": "COFFEE",
+      "source": "bundled"
+    },
+    {
+      "id": "parasol_segmentation",
+      "image": "demo/examples/images/parasol.jpg",
+      "task": "segmentation",
+      "query": "parasol with alternating rings of light green and dark green with flowers",
+      "source": "bundled"
+    },
+    {
+      "id": "seabreeze_visual_prompt",
+      "image": "demo/examples/images/seabreeze.jpg",
+      "task": "visual_prompt",
+      "query": "the person",
+      "ref_boxes": [
+        [
+          880.0,
+          120.0,
+          1500.0,
+          1070.0
+        ]
+      ],
+      "source": "bundled"
+    },
+    {
+      "id": "livingroom_freeform",
+      "image": "demo/examples/images/livingroom.jpg",
+      "task": "freeform",
+      "query": "describe the image with bounding boxes in detail",
+      "source": "bundled"
+    },
+    {
+      "id": "chicken_matting",
+      "image": "test_data/images/chicken.jpg",
+      "task": "matting",
+      "query": "chicken",
+      "source": "extracted:assets/case_study/matting_text.jpg#row1"
+    },
+    {
+      "id": "iceberg_matting",
+      "image": "test_data/images/iceberg.jpg",
+      "task": "matting",
+      "query": "iceberg",
+      "source": "extracted:assets/case_study/matting_text.jpg#row2"
+    },
+    {
+      "id": "athletes_matting",
+      "image": "test_data/images/athletes_black.jpg",
+      "task": "matting",
+      "query": "the people in black",
+      "source": "extracted:assets/case_study/matting_text.jpg#row3"
+    },
+    {
+      "id": "balloon_matting",
+      "image": "test_data/images/daikin_balloon.jpg",
+      "task": "matting",
+      "query": "the balloon with Daikin on it",
+      "source": "extracted:assets/case_study/matting_text.jpg#row4"
+    },
+    {
+      "id": "lady_refseg",
+      "image": "test_data/images/gray_hair_lady.jpg",
+      "task": "segmentation",
+      "query": "lady with gray hair in front",
+      "source": "extracted:assets/case_study/refseg.jpg#row1"
+    },
+    {
+      "id": "dog_refseg",
+      "image": "test_data/images/dog_car.jpg",
+      "task": "segmentation",
+      "query": "the dog with lowered ears",
+      "source": "extracted:assets/case_study/refseg.jpg#row2"
+    },
+    {
+      "id": "vase_refseg",
+      "image": "test_data/images/vase_crate.jpg",
+      "task": "segmentation",
+      "query": "a white and red vase on the wood crate",
+      "source": "extracted:assets/case_study/refseg.jpg#row3"
+    },
+    {
+      "id": "remotes_refseg",
+      "image": "test_data/images/remotes.jpg",
+      "task": "segmentation",
+      "query": "remote on the left and the third remote from the right",
+      "source": "extracted:assets/case_study/refseg.jpg#row4"
+    },
+    {
+      "id": "sheep_refseg_none",
+      "image": "test_data/images/sheep.jpg",
+      "task": "segmentation",
+      "query": "a deer standing next to a fire hydrant on a sidewalk",
+      "source": "extracted:assets/case_study/refseg.jpg#row5"
+    },
+    {
+      "id": "thomas_sign_ocr",
+      "image": "test_data/images/thomas_sign.jpg",
+      "task": "ocr",
+      "query": "text",
+      "source": "extracted:assets/case_study/ocr.jpg#row1"
+    },
+    {
+      "id": "thomas_sign_ocr_grounding",
+      "image": "test_data/images/thomas_sign.jpg",
+      "task": "ocr_grounding",
+      "query": "THOMAS",
+      "source": "extracted:assets/case_study/ocr.jpg#row1"
+    },
+    {
+      "id": "biscuit_box_ocr",
+      "image": "test_data/images/biscuit_box.jpg",
+      "task": "ocr",
+      "query": "text",
+      "source": "extracted:assets/case_study/ocr.jpg#row2"
+    },
+    {
+      "id": "receipt_ocr",
+      "image": "test_data/images/receipt.jpg",
+      "task": "ocr",
+      "query": "text",
+      "source": "extracted:assets/case_study/ocr.jpg#row3"
+    },
+    {
+      "id": "frozen_pipes_ocr",
+      "image": "test_data/images/frozen_pipes.jpg",
+      "task": "ocr",
+      "query": "text",
+      "source": "extracted:assets/case_study/ocr.jpg#row4"
+    },
+    {
+      "id": "cups_count_box",
+      "image": "test_data/images/cups.jpg",
+      "task": "count_box",
+      "query": "cups on the left",
+      "source": "extracted:assets/case_study/counting.jpg#row1"
+    },
+    {
+      "id": "shoe_rack_count_box",
+      "image": "test_data/images/shoe_rack.jpg",
+      "task": "count_box",
+      "query": "pairs of footwear",
+      "source": "extracted:assets/case_study/counting.jpg#row2"
+    },
+    {
+      "id": "colored_balls_count_point",
+      "image": "test_data/images/colored_balls.jpg",
+      "task": "count_point",
+      "query": "green balls",
+      "source": "extracted:assets/case_study/counting.jpg#row3"
+    },
+    {
+      "id": "fake_apples_count_box",
+      "image": "test_data/images/fake_apples.jpg",
+      "task": "count_box",
+      "query": "fake green apples",
+      "source": "extracted:assets/case_study/counting.jpg#row4"
+    },
+    {
+      "id": "seabreeze_assets_matting",
+      "image": "assets/demo/seabreeze.jpg",
+      "task": "matting",
+      "query": "person",
+      "source": "bundled"
+    }
+  ]
+}

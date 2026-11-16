@@ -16,8 +16,6 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue" alt="License"></a>
 </p>
 
-**English** | [简体中文](README_zh-CN.md)
-
 </div>
 
 > **WeVisOne-VL** (**We**Chat **Vis**ion All-in-**One**) is a vision-language foundation model that unifies **object-level** perception (object detection, referring localization, counting, pointing, and OCR) and **pixel-level** perception (referring segmentation and promptable alpha matting) through structured next-token prediction and a lightweight 9.6M-parameter pixel decoder—enabling localization at any user-specified granularity from points and boxes to binary masks and continuous alpha mattes, while reliably rejecting absent-target queries.
@@ -292,6 +290,28 @@ CUDA_VISIBLE_DEVICES=0 python demo/app.py \
 </details>
 
 
+
+## ⚙️ C++ GGML Backend (cpp_ggml)
+
+A pure C++17 inference path over a pinned llama.cpp/ggml runtime (LLAMA
+0.7.0-dev / GGML 0.27.0) with CUDA and Vulkan backends (no cuDNN), an
+AICore-style C API (`cpp_ggml/include/wevisone/wevisone_capi.h`) and the
+9.6M-parameter pixel decoder ported to ggml graphs:
+
+```bash
+git submodule update --init --recursive
+cmake -S cpp_ggml -B cpp_ggml/build-cpu -DCMAKE_BUILD_TYPE=Release
+cmake --build cpp_ggml/build-cpu --parallel 8
+cpp_ggml/build-cpu/wevisone-cli run --image demo/examples/images/seabreeze.jpg \
+    --task matting --query person --device cpu
+```
+
+GGUF exports (f16 / q8_0 / q4_K_M for the 2B and 4B checkpoints, plus
+f32/f16 mask decoders) are produced by
+`cpp_ggml/scripts/export_gguf_variants.sh`; per-tier usage, pairing guide
+and parity expectations live in `cpp_ggml/models/MODEL_CARD.md`, the
+benchmark harness in `cpp_ggml/benchmarks/`. See `cpp_ggml/README.md` for
+details.
 
 ## 📊 Evaluation
 

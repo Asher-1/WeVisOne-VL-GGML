@@ -41,9 +41,12 @@ def _run(monkeypatch, tmp_path: Path, image: Path | str, *extra: str) -> int:
 def fake_engine(monkeypatch):
     _FakeEngine.error = None
     monkeypatch.setattr(cli, "WeVisOneVL", _FakeEngine)
+    # cli.main() saves through the module-level _save_result wrapper (the
+    # supervision render stack is imported lazily inside it), so patching
+    # the wrapper keeps the suite runnable on hosts without supervision.
     monkeypatch.setattr(
         cli,
-        "save_result",
+        "_save_result",
         lambda output_dir, image, result: {"metadata": Path(output_dir) / "metadata.json"},
     )
 
@@ -99,7 +102,7 @@ def test_save_failure_still_prints_the_response(
     def broken(*args, **kwargs):
         raise OSError("disk full")
 
-    monkeypatch.setattr(cli, "save_result", broken)
+    monkeypatch.setattr(cli, "_save_result", broken)
     with caplog.at_level(logging.ERROR):
         assert _run(monkeypatch, tmp_path, image_file) == cli.EXIT_FAILURE
     assert "Cannot write results" in caplog.text

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import numpy as np
 import pytest
-from pycocotools import mask as coco_mask
 
 from evaluation.metrics import counting_metric, other_metric, pointing_bench_metric, refseg_metric
 from evaluation.metrics.matting_metric import compute_matting_metrics
@@ -12,6 +11,12 @@ from evaluation.utils.prompt_builder import TMPL_MATTE, build_prompt, pointing_b
 
 
 def _rle(mask: np.ndarray) -> dict:
+    # Skip (not error) when pycocotools is absent: the offline benchmark host
+    # cannot install it. Only the RLE-backed tests depend on it; the parser,
+    # box/counting/refseg/matting tests below run without it.
+    pytest.importorskip("pycocotools")
+    from pycocotools import mask as coco_mask
+
     rle = coco_mask.encode(np.asfortranarray(mask.astype(np.uint8)))
     return {"size": rle["size"], "counts": rle["counts"].decode("ascii")}
 

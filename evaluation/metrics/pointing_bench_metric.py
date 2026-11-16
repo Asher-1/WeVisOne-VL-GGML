@@ -18,7 +18,6 @@ from collections import defaultdict
 from statistics import mean
 
 import numpy as np
-from pycocotools import mask as coco_mask
 
 PROTOCOL = "point_mask_f1"
 
@@ -29,6 +28,11 @@ def read_jsonl(path: str) -> list[dict]:
 
 
 def decode(rle: dict) -> np.ndarray:
+    # Deferred so importing this metric module never requires pycocotools
+    # (same point-of-use pattern as other_metric.point_target; the offline
+    # benchmark host cannot install it).
+    from pycocotools import mask as coco_mask
+
     rle = dict(rle)
     if isinstance(rle.get("counts"), str):
         rle["counts"] = rle["counts"].encode("ascii")
